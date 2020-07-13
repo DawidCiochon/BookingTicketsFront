@@ -10,8 +10,6 @@ export class LoginComponent implements OnInit {
 
   constructor() { }
 
-  hero = 'Windstor';
-
   ngOnInit(): void {
   }
 }
