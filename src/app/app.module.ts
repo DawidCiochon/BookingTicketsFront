@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {MovieServiceService} from './Services/movie-service.service';
-
+import {UserService} from './Services/user.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -32,8 +33,9 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     HttpClientModule,
     RouterModule, /*.forRoot([], {useHash: true})*/
     MatDatepickerModule,
+    ReactiveFormsModule
   ],
-  providers: [MovieServiceService],
+  providers: [MovieServiceService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

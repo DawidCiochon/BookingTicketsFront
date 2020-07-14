@@ -7,7 +7,7 @@ import {FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class UserService {
   private headers: HttpHeaders;
-  private BasetUrl = 'https://localhost:5001/api/';
+  private BasetUrl = 'https://localhost:5001/api';
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
@@ -21,13 +21,13 @@ export class UserService {
    });
 
 
-   /*register(){
+   register(){
      let body = {
        FirstName: this.formModel.value.FirstName,
        LastName: this.formModel.value.LastName,
        Email: this.formModel.value.Email,
        Password: this.formModel.value.Password
      };
-     return this.http.post(this.BasetUrl + 'api/register', body);
-   }*/
+     return this.http.post(this.BasetUrl + '/user', body);
+   }
 }
