@@ -1,6 +1,8 @@
 export interface IMovie {
-    Title: string;
-    Description: string;
-    Picture: string;
-    Duration: number;
+    id: number;
+    title: string;
+    description: string;
+    picture: string;
+    duration: number;
+    seances: [];
 }

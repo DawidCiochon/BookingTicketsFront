@@ -12,6 +12,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MovieComponent } from './movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,11 +24,14 @@ import { HttpClientModule } from '@angular/common/http';
     CreateAccountComponent,
     NavbarComponent,
     MovieComponent,
+    DatePickerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule, /*.forRoot([], {useHash: true})*/
+    MatDatepickerModule,
   ],
   providers: [MovieServiceService],
   bootstrap: [AppComponent]
