@@ -21,7 +21,7 @@ export class UserService {
    });
 
 
-   register(){
+   register() {
      let body = {
        FirstName: this.formModel.value.FirstName,
        LastName: this.formModel.value.LastName,
@@ -29,5 +29,9 @@ export class UserService {
        Password: this.formModel.value.Password
      };
      return this.http.post(this.BasetUrl + '/user', body);
+   }
+
+   login(formData){
+    return this.http.post(this.BasetUrl + '/user/authenticate', formData);
    }
 }

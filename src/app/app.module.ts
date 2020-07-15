@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
 
 import {MovieServiceService} from './Services/movie-service.service';
 import {UserService} from './Services/user.service';
@@ -29,11 +31,14 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule, /*.forRoot([], {useHash: true})*/
     MatDatepickerModule,
-    ReactiveFormsModule
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [MovieServiceService, UserService],
   bootstrap: [AppComponent]

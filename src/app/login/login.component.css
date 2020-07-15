@@ -1,8 +1,9 @@
-.form-label-group{
-    margin-bottom: 20px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+.container{
+    margin-top: 20px;
+}
+
+.card{
+    border-radius: 20px;
 }
 
 .form-control{
@@ -18,12 +19,11 @@
     text-transform: uppercase;;
 }
 
-.card{
-    border-radius: 20px;
-}
-
-.container{
-    margin-top: 20px;
+.form-group{
+    margin-bottom: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .col-lg-6{
