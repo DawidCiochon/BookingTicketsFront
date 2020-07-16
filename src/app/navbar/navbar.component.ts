@@ -13,5 +13,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/cinema']);
+  }
 }
