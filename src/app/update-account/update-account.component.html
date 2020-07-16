@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-signin">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign up</h5>
+                    <form class="form-signin" [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+                        <div class="form-label-group">
+                            <input id="inputFirstName" class="form-control" placeholder="First Name" formControlName="FirstName">
+                            <label class="text-danger" *ngIf="service.formModel.get('FirstName').touched && service.formModel.get('FirstName').errors?.required">This fiels is mandatory</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input id="inputLastName" class="form-control" placeholder="Last Name" formControlName="LastName">
+                            <label class="text-danger" *ngIf="service.formModel.get('LastName').touched && service.formModel.get('LastName').errors?.required">This fiels is mandatory</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="Email">
+                            <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Invalid email</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="Password">
+                            <label class="text-danger" *ngIf="service.formModel.get('Password').touched && service.formModel.get('Password').errors?.required">This fiels is mandatory</label>
+                            <label class="text-danger" *ngIf="service.formModel.get('Password').touched && service.formModel.get('FirstName').errors?.minlength">Minimum length is 8 characters</label>
+                        </div>
+                        <button class="btn btl-lg btn-primary" type="submit">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

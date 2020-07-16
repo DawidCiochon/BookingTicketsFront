@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MovieComponent } from './home/movie/movie.component';
+import { MovieComponent } from './movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { SeatsComponent } from './seats/seats.component';
 import { HomeComponent } from './home/home.component';
 import { CinemaComponent } from './cinema/cinema.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { CinemaComponent } from './cinema/cinema.component';
     SeatsComponent,
     HomeComponent,
     CinemaComponent,
+    UpdateAccountComponent,
   ],
   imports: [
     BrowserModule,
