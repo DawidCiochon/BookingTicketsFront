@@ -12,12 +12,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MovieComponent } from './movie/movie.component';
+import { MovieComponent } from './home/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { SeatsComponent } from './seats/seats.component';
+import { HomeComponent } from './home/home.component';
+import { CinemaComponent } from './cinema/cinema.component';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     NavbarComponent,
     MovieComponent,
     DatePickerComponent,
+    SeatsComponent,
+    HomeComponent,
+    CinemaComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class UserService {
        FirstName: this.formModel.value.FirstName,
        LastName: this.formModel.value.LastName,
        Email: this.formModel.value.Email,
-       Password: this.formModel.value.Password
+       Password: this.formModel.value.Password,
      };
      return this.http.post(this.BasetUrl + '/user', body);
    }
