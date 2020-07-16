@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  flag = false;
   formModel = {
     Email: '',
     Password: ''
@@ -26,10 +26,12 @@ export class LoginComponent implements OnInit {
     this.service.login(form.value).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.token);
-        this.router.navigateByUrl('/movie');
+        this.router.navigateByUrl('/home');
+        this.flag = true;
       },
       (err: any)  => {
-          {console.log(err); }
+          {console.log(err);
+           this.flag = false; }
       }
     );
   }

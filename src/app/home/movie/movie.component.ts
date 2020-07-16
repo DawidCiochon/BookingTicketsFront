@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieServiceService } from '../Services/movie-service.service';
+import { MovieServiceService } from '../../Services/movie-service.service';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs/Subscription';
-import { IMovie } from '../models/Imovie';
+import { Movie } from '../../models/movie';
 
 @Component({
   selector: 'app-movie',
@@ -11,7 +11,7 @@ import { IMovie } from '../models/Imovie';
 
 })
 export class MovieComponent implements OnInit {
-  movies: IMovie[];
+  movies: Movie[];
   constructor(private movieService: MovieServiceService) { }
 
 
