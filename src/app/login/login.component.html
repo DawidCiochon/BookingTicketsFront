@@ -4,12 +4,13 @@
             <div class="card card-signin">
                 <div class="card-body">
                     <h5 class="card-title text-center">Sign in</h5>
+                    <!--#form='ngForm'-->
                     <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
                         <div class="form-group">
-                            <input type="email" class="form-control" #Email='ngModel' name="Email" [(ngModel)]="formModel.Email" placeholder="Email" required>
+                            <input type="email" class="form-control" name="Email" [(ngModel)]="formModel.Email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" #Password='ngModel' name="Password" [(ngModel)]="formModel.Password" placeholder="Password" required>
+                            <input type="password" class="form-control" name="Password" [(ngModel)]="formModel.Password" placeholder="Password" required>
                         </div>
                         <button class="btn btl-lg btn-primary" type="submit" [disabled]="form.invalid">Sign in</button>
                     </form>

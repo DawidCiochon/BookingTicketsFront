@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../Services/user.service';
+import { User } from '../models/user';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,14 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  currentUser: User;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public service: UserService) {
+    this.service.currentUser.subscribe(x => this.currentUser = x);
+   }
 
   ngOnInit(): void {
   }
 
   onLogout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/cinema']);
+    this.service.logout();
+    this.router.navigate(['/login']);
+
   }
 }

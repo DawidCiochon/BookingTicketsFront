@@ -4,11 +4,11 @@ import {FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, from } from 'rxjs';
 import { User } from '../models/user';
-import 'rxjs/add/operator/map'; 
-/*import { map } from 'rxjs/operators';*/
-import 'rxjs/add/operator/catch';
-import { Response } from '@angular/http';
-import { catchError } from 'rxjs/operators';
+
+import { Observable, BehaviorSubject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,13 @@ import { catchError } from 'rxjs/operators';
 export class UserService {
   private headers: HttpHeaders;
   private BasetUrl = 'https://localhost:5001/api';
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+
+  constructor(private fb: FormBuilder, private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
 
    }
 
@@ -28,6 +33,9 @@ export class UserService {
      Password: ['', [Validators.required, Validators.minLength(8)]],
    });
 
+   public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+   }
 
    register() {
      let body = {
@@ -40,8 +48,21 @@ export class UserService {
    }
 
    login(formData){
-    return this.http.post(this.BasetUrl + '/user/authenticate', formData);
+    return this.http.post(this.BasetUrl + '/user/authenticate', formData)
+      .pipe(map(user => {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        // this.currentUserSubject.next(user);
+        return user;
+      }));
    }
+
+
+    logout() {
+      localStorage.removeItem('currentUser');
+      /*this.router.navigate(['/cinema']);*/
+      this.currentUserSubject.next(null);
+    }
+   
 
 
    updateUser(user: User): Observable<User>{
@@ -84,4 +105,5 @@ export class UserService {
     }
     return Observable.throw(error || 'ASP.NET Core server error');
 }
+
 }
