@@ -21,6 +21,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { SeatsComponent } from './seats/seats.component';
 import { HomeComponent } from './home/home.component';
 import { CinemaComponent } from './cinema/cinema.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { CinemaComponent } from './cinema/cinema.component';
     SeatsComponent,
     HomeComponent,
     CinemaComponent,
+    UpdateAccountComponent,
   ],
   imports: [
     BrowserModule,
