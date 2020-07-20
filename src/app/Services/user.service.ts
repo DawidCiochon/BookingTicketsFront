@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable, from } from 'rxjs';
 import { User } from '../models/user';
-
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
+import { Response } from '@angular/http';
 
 
 @Injectable({
@@ -62,17 +60,9 @@ export class UserService {
       /*this.router.navigate(['/cinema']);*/
       this.currentUserSubject.next(null);
     }
-   
-
 
    updateUser(user: User): Observable<User>{
-     return this.http.put(this.BasetUrl + '/user' + user.id, user)
-        .map((res: Response) => {
-            const data = res.json();
-            console.log('updateUser status: ' + data.status);
-            return data.user;
-        })
-        .catch(this.handleError);
+     return this.http.put<User>(this.BasetUrl + '/user' + user.id, user);
    }
 
    getUser(id: string) : Observable<User> {
@@ -81,13 +71,9 @@ export class UserService {
    }
 
    insertUser(user: User) : Observable<User> {
-    return this.http.post(this.BasetUrl + '/user', user)
-        .map((res: Response) => {
-          const data = res.json();
-          console.log('insertCustomer status: ' + data.status);
-          return data.user;
-        })
-          .catch(this.handleError)
+    return this.http.post<User>(this.BasetUrl + '/user', user).pipe(
+        tap(data => console.log(data)),
+        catchError(this.handleError));
    }
 
    private handleError(error: any) {

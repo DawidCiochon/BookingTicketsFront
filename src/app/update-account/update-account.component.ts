@@ -18,8 +18,7 @@ export class UpdateAccountComponent implements OnInit {
   };
 
   errorMessage: string;
-  
-  
+
   constructor(private router: Router, private route: ActivatedRoute, public service: UserService) { }
 
   ngOnInit(): void {
