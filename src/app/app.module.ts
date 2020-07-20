@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MovieComponent } from './movie/movie.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -22,6 +22,9 @@ import { SeatsComponent } from './seats/seats.component';
 import { HomeComponent } from './home/home.component';
 import { CinemaComponent } from './cinema/cinema.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
+import { Interceptor } from './_helpers/interceptor';
+import { platformBrowser } from '@angular/platform-browser';
+
 
 
 @NgModule({
@@ -48,7 +51,9 @@ import { UpdateAccountComponent } from './update-account/update-account.componen
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
   ],
-  providers: [MovieServiceService, UserService],
-  bootstrap: [AppComponent]
+  providers: [MovieServiceService, UserService,
+  {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
+  bootstrap: [AppComponent],
+  exports: [BrowserModule]
 })
 export class AppModule { }
